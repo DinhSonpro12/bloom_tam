@@ -1,0 +1,57 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 9701723
+Time: 14164,531 ms (00:14,165)
+                                                                 QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..131449.58 rows=1 width=12) (actual time=390.353..396.378 rows=0 loops=1)
+   Output: c1, c2, c3
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=16196 read=36246 dirtied=36463 written=36246
+   ->  Parallel Seq Scan on public.nhieucot_9701723  (cost=0.00..130449.48 rows=1 width=12) (actual time=366.622..366.622 rows=0 loops=3)
+         Output: c1, c2, c3
+         Filter: ((nhieucot_9701723.c1 = 1659267176) AND (nhieucot_9701723.c2 = '2488900764'::bigint) AND (nhieucot_9701723.c3 = 276544529))
+         Rows Removed by Filter: 3233908
+         Buffers: shared hit=16196 read=36246 dirtied=36463 written=36246
+         Worker 0:  actual time=354.956..354.957 rows=0 loops=1
+           JIT:
+             Functions: 2
+             Options: Inlining false, Optimization false, Expressions true, Deforming true
+             Timing: Generation 0.404 ms, Inlining 0.000 ms, Optimization 0.340 ms, Emission 2.758 ms, Total 3.502 ms
+           Buffers: shared hit=5328 read=11485 dirtied=11557 written=11485
+         Worker 1:  actual time=354.978..354.978 rows=0 loops=1
+           JIT:
+             Functions: 2
+             Options: Inlining false, Optimization false, Expressions true, Deforming true
+             Timing: Generation 0.393 ms, Inlining 0.000 ms, Optimization 0.354 ms, Emission 2.758 ms, Total 3.505 ms
+           Buffers: shared hit=5400 read=11611 dirtied=11688 written=11611
+ Planning:
+   Buffers: shared hit=12 read=23 written=23
+ Planning Time: 0.297 ms
+ JIT:
+   Functions: 6
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 1.112 ms, Inlining 0.000 ms, Optimization 1.016 ms, Emission 7.430 ms, Total 9.559 ms
+ Execution Time: 396.737 ms
+(30 rows)
+
+Time: 397,829 ms
+CREATE INDEX
+Time: 9002,449 ms (00:09,002)
+ pg_size_pretty 
+----------------
+ 410 MB
+(1 row)
+
+Time: 0,789 ms
+ pg_size_pretty 
+----------------
+ 208 MB
+(1 row)
+
+Time: 0,199 ms
+DROP INDEX
+Time: 24,372 ms
+DROP TABLE
+Time: 57,693 ms

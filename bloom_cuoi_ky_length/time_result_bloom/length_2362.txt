@@ -1,0 +1,57 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 10000000
+Time: 15332,860 ms (00:15,333)
+CREATE INDEX
+Time: 66264,810 ms (01:06,265)
+                                                               QUERY PLAN                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..102331.33 rows=50000 width=4) (actual time=3973.110..3976.970 rows=0 loops=1)
+   Output: c1
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=32 read=44216 written=73
+   ->  Parallel Seq Scan on public.length_2362  (cost=0.00..96331.33 rows=20833 width=4) (actual time=3949.872..3949.873 rows=0 loops=3)
+         Output: c1
+         Filter: (length_2362.c1 = 152207904)
+         Rows Removed by Filter: 3333333
+         Buffers: shared hit=32 read=44216 written=73
+         Worker 0:  actual time=3929.774..3929.775 rows=0 loops=1
+           JIT:
+             Functions: 2
+             Options: Inlining false, Optimization false, Expressions true, Deforming true
+             Timing: Generation 0.497 ms, Inlining 0.000 ms, Optimization 0.473 ms, Emission 3.059 ms, Total 4.029 ms
+           Buffers: shared hit=9 read=14407 written=9
+         Worker 1:  actual time=3947.221..3947.222 rows=0 loops=1
+           JIT:
+             Functions: 2
+             Options: Inlining false, Optimization false, Expressions true, Deforming true
+             Timing: Generation 0.509 ms, Inlining 0.000 ms, Optimization 0.464 ms, Emission 3.019 ms, Total 3.992 ms
+           Buffers: shared hit=10 read=15319 written=32
+ Planning:
+   Buffers: shared hit=21 read=18 dirtied=2 written=18
+ Planning Time: 0.456 ms
+ JIT:
+   Functions: 6
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 1.417 ms, Inlining 0.000 ms, Optimization 1.460 ms, Emission 8.141 ms, Total 11.018 ms
+ Execution Time: 3977.429 ms
+(30 rows)
+
+Time: 3978,558 ms (00:03,979)
+ pg_size_pretty 
+----------------
+ 346 MB
+(1 row)
+
+Time: 0,329 ms
+ pg_size_pretty 
+----------------
+ 2894 MB
+(1 row)
+
+Time: 0,130 ms
+DROP INDEX
+Time: 382,089 ms
+DROP TABLE
+Time: 54,654 ms

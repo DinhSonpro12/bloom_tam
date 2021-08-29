@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1000000
+Time: 1218,461 ms (00:01,218)
+CREATE INDEX
+Time: 580,377 ms
+                                                                                                                                                                                                                                                    QUERY PLAN                                                                                                                                                                                                                                                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..28281.10 rows=1 width=68) (actual time=42.256..45.327 rows=0 loops=1)
+   Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=5406
+   ->  Parallel Seq Scan on public.column_17  (cost=0.00..27281.00 rows=1 width=68) (actual time=39.714..39.714 rows=0 loops=3)
+         Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17
+         Filter: ((column_17.c1 = 457946) AND (column_17.c2 = 457946) AND (column_17.c3 = 457946) AND (column_17.c4 = 457946) AND (column_17.c5 = 457946) AND (column_17.c6 = 457946) AND (column_17.c7 = 457946) AND (column_17.c8 = 457946) AND (column_17.c9 = 457946) AND (column_17.c10 = 457946) AND (column_17.c11 = 457946) AND (column_17.c12 = 457946) AND (column_17.c13 = 457946) AND (column_17.c14 = 457946) AND (column_17.c15 = 457946) AND (column_17.c16 = 457946) AND (column_17.c17 = 457946))
+         Rows Removed by Filter: 333333
+         Buffers: shared hit=5406
+         Worker 0:  actual time=38.642..38.643 rows=0 loops=1
+           Buffers: shared hit=1724
+         Worker 1:  actual time=38.630..38.630 rows=0 loops=1
+           Buffers: shared hit=1722
+ Planning:
+   Buffers: shared hit=123
+ Planning Time: 0.306 ms
+ Execution Time: 45.351 ms
+(18 rows)
+
+Time: 46,117 ms
+ pg_size_pretty 
+----------------
+ 42 MB
+(1 row)
+
+Time: 0,284 ms
+ pg_size_pretty 
+----------------
+ 15 MB
+(1 row)
+
+Time: 0,153 ms
+DROP INDEX
+Time: 3,981 ms
+DROP TABLE
+Time: 8,313 ms

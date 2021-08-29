@@ -1,0 +1,16 @@
+psql bloom < file_sql_bloom/max_value_32768.sql > time_result_bloom/max_value_32768.txt | bash measure_ram.sh 32768
+psql bloom < file_sql_bloom/max_value_65536.sql > time_result_bloom/max_value_65536.txt | bash measure_ram.sh 65536
+psql bloom < file_sql_bloom/max_value_131072.sql > time_result_bloom/max_value_131072.txt | bash measure_ram.sh 131072
+psql bloom < file_sql_bloom/max_value_262144.sql > time_result_bloom/max_value_262144.txt | bash measure_ram.sh 262144
+psql bloom < file_sql_bloom/max_value_524288.sql > time_result_bloom/max_value_524288.txt | bash measure_ram.sh 524288
+psql bloom < file_sql_bloom/max_value_1048576.sql > time_result_bloom/max_value_1048576.txt | bash measure_ram.sh 1048576
+psql bloom < file_sql_bloom/max_value_2097152.sql > time_result_bloom/max_value_2097152.txt | bash measure_ram.sh 2097152
+psql bloom < file_sql_bloom/max_value_4194304.sql > time_result_bloom/max_value_4194304.txt | bash measure_ram.sh 4194304
+psql bloom < file_sql_bloom/max_value_8388608.sql > time_result_bloom/max_value_8388608.txt | bash measure_ram.sh 8388608
+psql bloom < file_sql_bloom/max_value_16777216.sql > time_result_bloom/max_value_16777216.txt | bash measure_ram.sh 16777216
+psql bloom < file_sql_bloom/max_value_33554432.sql > time_result_bloom/max_value_33554432.txt | bash measure_ram.sh 33554432
+psql bloom < file_sql_bloom/max_value_67108864.sql > time_result_bloom/max_value_67108864.txt | bash measure_ram.sh 67108864
+psql bloom < file_sql_bloom/max_value_134217728.sql > time_result_bloom/max_value_134217728.txt | bash measure_ram.sh 134217728
+psql bloom < file_sql_bloom/max_value_268435456.sql > time_result_bloom/max_value_268435456.txt | bash measure_ram.sh 268435456
+psql bloom < file_sql_bloom/max_value_536870912.sql > time_result_bloom/max_value_536870912.txt | bash measure_ram.sh 536870912
+psql bloom < file_sql_bloom/max_value_1073741824.sql > time_result_bloom/max_value_1073741824.txt | bash measure_ram.sh 1073741824

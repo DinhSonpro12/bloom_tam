@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 895430
+Time: 1668,360 ms (00:01,668)
+                                                                QUERY PLAN                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..11478.36 rows=4938 width=12) (actual time=30.458..32.823 rows=0 loops=1)
+   Output: c1, c2, c3
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=4841
+   ->  Parallel Seq Scan on public.nhieucot_q1_895430  (cost=0.00..9984.56 rows=2058 width=12) (actual time=28.231..28.232 rows=0 loops=3)
+         Output: c1, c2, c3
+         Filter: (nhieucot_q1_895430.c1 = 83152004)
+         Rows Removed by Filter: 298477
+         Buffers: shared hit=4841
+         Worker 0:  actual time=27.166..27.167 rows=0 loops=1
+           Buffers: shared hit=1517
+         Worker 1:  actual time=27.444..27.445 rows=0 loops=1
+           Buffers: shared hit=1510
+ Planning:
+   Buffers: shared hit=30
+ Planning Time: 0.154 ms
+ Execution Time: 32.843 ms
+(18 rows)
+
+Time: 33,387 ms
+CREATE INDEX
+Time: 810,405 ms
+ pg_size_pretty 
+----------------
+ 38 MB
+(1 row)
+
+Time: 0,340 ms
+ pg_size_pretty 
+----------------
+ 19 MB
+(1 row)
+
+Time: 0,188 ms
+DROP INDEX
+Time: 12,890 ms
+DROP TABLE
+Time: 16,377 ms

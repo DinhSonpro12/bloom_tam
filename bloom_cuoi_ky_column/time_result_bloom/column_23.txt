@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1000000
+Time: 1247,691 ms (00:01,248)
+CREATE INDEX
+Time: 688,490 ms
+                                                                                                                                                                                                                                                                                                                                           QUERY PLAN                                                                                                                                                                                                                                                                                                                                            
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..34531.10 rows=1 width=92) (actual time=47.953..50.760 rows=0 loops=1)
+   Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=5406
+   ->  Parallel Seq Scan on public.column_23  (cost=0.00..33531.00 rows=1 width=92) (actual time=45.361..45.361 rows=0 loops=3)
+         Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23
+         Filter: ((column_23.c1 = 457946) AND (column_23.c2 = 457946) AND (column_23.c3 = 457946) AND (column_23.c4 = 457946) AND (column_23.c5 = 457946) AND (column_23.c6 = 457946) AND (column_23.c7 = 457946) AND (column_23.c8 = 457946) AND (column_23.c9 = 457946) AND (column_23.c10 = 457946) AND (column_23.c11 = 457946) AND (column_23.c12 = 457946) AND (column_23.c13 = 457946) AND (column_23.c14 = 457946) AND (column_23.c15 = 457946) AND (column_23.c16 = 457946) AND (column_23.c17 = 457946) AND (column_23.c18 = 457946) AND (column_23.c19 = 457946) AND (column_23.c20 = 457946) AND (column_23.c21 = 457946) AND (column_23.c22 = 457946) AND (column_23.c23 = 457946))
+         Rows Removed by Filter: 333333
+         Buffers: shared hit=5406
+         Worker 0:  actual time=44.225..44.226 rows=0 loops=1
+           Buffers: shared hit=1722
+         Worker 1:  actual time=44.360..44.361 rows=0 loops=1
+           Buffers: shared hit=1731
+ Planning:
+   Buffers: shared hit=153
+ Planning Time: 0.351 ms
+ Execution Time: 50.786 ms
+(18 rows)
+
+Time: 51,597 ms
+ pg_size_pretty 
+----------------
+ 42 MB
+(1 row)
+
+Time: 0,245 ms
+ pg_size_pretty 
+----------------
+ 15 MB
+(1 row)
+
+Time: 0,149 ms
+DROP INDEX
+Time: 5,225 ms
+DROP TABLE
+Time: 8,447 ms

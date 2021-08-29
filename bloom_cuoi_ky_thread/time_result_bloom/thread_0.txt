@@ -1,0 +1,41 @@
+SET
+CREATE TABLE
+Timing is on.
+INSERT 0 10000000
+Time: 13800,670 ms (00:13,801)
+CREATE INDEX
+Time: 4190,487 ms (00:04,190)
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+ Seq Scan on public.thread_0  (cost=0.00..169248.00 rows=50000 width=4) (actual time=689.549..689.550 rows=0 loops=1)
+   Output: c1
+   Filter: (thread_0.c1 = 680709408)
+   Rows Removed by Filter: 10000000
+   Buffers: shared hit=6077 read=38171 written=32
+ Planning:
+   Buffers: shared hit=17 read=22 dirtied=2 written=22
+ Planning Time: 0.467 ms
+ JIT:
+   Functions: 2
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 0.262 ms, Inlining 0.000 ms, Optimization 0.299 ms, Emission 1.258 ms, Total 1.818 ms
+ Execution Time: 689.853 ms
+(13 rows)
+
+Time: 690,962 ms
+ pg_size_pretty 
+----------------
+ 346 MB
+(1 row)
+
+Time: 0,299 ms
+ pg_size_pretty 
+----------------
+ 153 MB
+(1 row)
+
+Time: 0,167 ms
+DROP INDEX
+Time: 25,128 ms
+DROP TABLE
+Time: 51,498 ms

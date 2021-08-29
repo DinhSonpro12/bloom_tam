@@ -1,0 +1,41 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 177156
+Time: 336,721 ms
+CREATE INDEX
+Time: 102,936 ms
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on public.nhieucot_177156  (cost=3167.56..3182.85 rows=1 width=12) (actual time=0.999..0.999 rows=0 loops=1)
+   Output: c1, c2, c3
+   Recheck Cond: ((nhieucot_177156.c1 = 863768933) AND (nhieucot_177156.c3 = 123395561))
+   Rows Removed by Index Recheck: 2
+   Filter: (nhieucot_177156.c2 = '2591306799'::bigint)
+   Heap Blocks: exact=2
+   Buffers: shared hit=350
+   ->  Bitmap Index Scan on idx_bloom  (cost=0.00..3167.56 rows=4 width=0) (actual time=0.986..0.986 rows=2 loops=1)
+         Index Cond: ((nhieucot_177156.c1 = 863768933) AND (nhieucot_177156.c3 = 123395561))
+         Buffers: shared hit=348
+ Planning:
+   Buffers: shared hit=56
+ Planning Time: 0.261 ms
+ Execution Time: 1.029 ms
+(14 rows)
+
+Time: 1,658 ms
+ pg_size_pretty 
+----------------
+ 7664 kB
+(1 row)
+
+Time: 0,207 ms
+ pg_size_pretty 
+----------------
+ 2792 kB
+(1 row)
+
+Time: 0,096 ms
+DROP INDEX
+Time: 8,992 ms
+DROP TABLE
+Time: 11,913 ms

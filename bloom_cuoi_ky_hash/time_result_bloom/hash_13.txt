@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1000000
+Time: 1057,563 ms (00:01,058)
+CREATE INDEX
+Time: 411,699 ms
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..11133.33 rows=5000 width=4) (actual time=38.486..41.216 rows=0 loops=1)
+   Output: c1
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=4425
+   ->  Parallel Seq Scan on public.hash_13  (cost=0.00..9633.33 rows=2083 width=4) (actual time=35.771..35.772 rows=0 loops=3)
+         Output: c1
+         Filter: (hash_13.c1 = 842141518)
+         Rows Removed by Filter: 333333
+         Buffers: shared hit=4425
+         Worker 0:  actual time=34.132..34.133 rows=0 loops=1
+           Buffers: shared hit=1041
+         Worker 1:  actual time=35.056..35.056 rows=0 loops=1
+           Buffers: shared hit=2145
+ Planning:
+   Buffers: shared hit=39
+ Planning Time: 0.191 ms
+ Execution Time: 41.232 ms
+(18 rows)
+
+Time: 41,841 ms
+ pg_size_pretty 
+----------------
+ 35 MB
+(1 row)
+
+Time: 0,381 ms
+ pg_size_pretty 
+----------------
+ 15 MB
+(1 row)
+
+Time: 0,200 ms
+DROP INDEX
+Time: 3,781 ms
+DROP TABLE
+Time: 6,368 ms

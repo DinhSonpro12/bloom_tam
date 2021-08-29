@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1000000
+Time: 1798,615 ms (00:01,799)
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..12246.98 rows=1 width=16) (actual time=36.208..39.016 rows=0 loops=1)
+   Output: c1, c2, c3, c4
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=4425
+   ->  Parallel Seq Scan on public.column_4  (cost=0.00..11246.88 rows=1 width=16) (actual time=34.026..34.027 rows=0 loops=3)
+         Output: c1, c2, c3, c4
+         Filter: ((column_4.c1 = 457946) AND (column_4.c2 = 457946) AND (column_4.c3 = 457946) AND (column_4.c4 = 457946))
+         Rows Removed by Filter: 333333
+         Buffers: shared hit=4425
+         Worker 0:  actual time=33.146..33.148 rows=0 loops=1
+           Buffers: shared hit=1412
+         Worker 1:  actual time=33.132..33.133 rows=0 loops=1
+           Buffers: shared hit=1406
+ Planning:
+   Buffers: shared hit=36
+ Planning Time: 0.154 ms
+ Execution Time: 39.032 ms
+(18 rows)
+
+Time: 39,493 ms
+CREATE INDEX
+Time: 1364,627 ms (00:01,365)
+ pg_size_pretty 
+----------------
+ 35 MB
+(1 row)
+
+Time: 0,268 ms
+ pg_size_pretty 
+----------------
+ 30 MB
+(1 row)
+
+Time: 0,160 ms
+DROP INDEX
+Time: 13,760 ms
+DROP TABLE
+Time: 12,579 ms

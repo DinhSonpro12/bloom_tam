@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1310999
+Time: 1380,683 ms (00:01,381)
+CREATE INDEX
+Time: 458,689 ms
+                                                              QUERY PLAN                                                               
+---------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..14284.62 rows=6555 width=4) (actual time=39.596..42.317 rows=0 loops=1)
+   Output: c1
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=5801
+   ->  Parallel Seq Scan on public.motcot_1310999  (cost=0.00..12629.12 rows=2731 width=4) (actual time=37.210..37.211 rows=0 loops=3)
+         Output: c1
+         Filter: (motcot_1310999.c1 = 501056692)
+         Rows Removed by Filter: 437000
+         Buffers: shared hit=5801
+         Worker 0:  actual time=36.171..36.172 rows=0 loops=1
+           Buffers: shared hit=1601
+         Worker 1:  actual time=36.283..36.284 rows=0 loops=1
+           Buffers: shared hit=2004
+ Planning:
+   Buffers: shared hit=39
+ Planning Time: 0.239 ms
+ Execution Time: 42.336 ms
+(18 rows)
+
+Time: 43,026 ms
+ pg_size_pretty 
+----------------
+ 45 MB
+(1 row)
+
+Time: 0,325 ms
+ pg_size_pretty 
+----------------
+ 20 MB
+(1 row)
+
+Time: 0,126 ms
+DROP INDEX
+Time: 4,768 ms
+DROP TABLE
+Time: 8,746 ms

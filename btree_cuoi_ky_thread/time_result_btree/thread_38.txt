@@ -1,0 +1,50 @@
+SET
+CREATE TABLE
+Timing is on.
+INSERT 0 10000000
+Time: 12634,966 ms (00:12,635)
+                                                             QUERY PLAN                                                              
+-------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..86149.73 rows=56416 width=4) (actual time=373.844..380.328 rows=0 loops=1)
+   Output: c1
+   Workers Planned: 4
+   Workers Launched: 4
+   Buffers: shared hit=16138 read=28110 dirtied=28218 written=28110
+   ->  Parallel Seq Scan on public.thread_38  (cost=0.00..79508.12 rows=14104 width=4) (actual time=352.101..352.102 rows=0 loops=5)
+         Output: c1
+         Filter: (thread_38.c1 = 841874872)
+         Rows Removed by Filter: 2000000
+         Buffers: shared hit=16138 read=28110 dirtied=28218 written=28110
+         Worker 0:  actual time=349.827..349.828 rows=0 loops=1
+           Buffers: shared hit=2659 read=4795 dirtied=4813 written=4795
+         Worker 1:  actual time=338.838..338.839 rows=0 loops=1
+           Buffers: shared hit=5310 read=8421 dirtied=8457 written=8421
+         Worker 2:  actual time=349.191..349.193 rows=0 loops=1
+           Buffers: shared hit=2654 read=4781 dirtied=4800 written=4781
+         Worker 3:  actual time=349.191..349.191 rows=0 loops=1
+           Buffers: shared hit=2655 read=4787 dirtied=4804 written=4787
+ Planning:
+   Buffers: shared hit=4 read=22 written=22
+ Planning Time: 0.302 ms
+ Execution Time: 380.346 ms
+(22 rows)
+
+Time: 381,122 ms
+CREATE INDEX
+Time: 9947,920 ms (00:09,948)
+ pg_size_pretty 
+----------------
+ 346 MB
+(1 row)
+
+Time: 0,329 ms
+ pg_size_pretty 
+----------------
+ 214 MB
+(1 row)
+
+Time: 0,189 ms
+DROP INDEX
+Time: 34,298 ms
+DROP TABLE
+Time: 57,143 ms

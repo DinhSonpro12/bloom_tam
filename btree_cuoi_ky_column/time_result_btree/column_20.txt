@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1000000
+Time: 1252,503 ms (00:01,253)
+                                                                                                                                                                                                                                                                                                QUERY PLAN                                                                                                                                                                                                                                                                                                
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..16542.35 rows=1 width=80) (actual time=51.997..55.098 rows=0 loops=1)
+   Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=5406
+   ->  Parallel Seq Scan on public.column_20  (cost=0.00..15542.25 rows=1 width=80) (actual time=49.611..49.612 rows=0 loops=3)
+         Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20
+         Filter: ((column_20.c1 = 457946) AND (column_20.c2 = 457946) AND (column_20.c3 = 457946) AND (column_20.c4 = 457946) AND (column_20.c5 = 457946) AND (column_20.c6 = 457946) AND (column_20.c7 = 457946) AND (column_20.c8 = 457946) AND (column_20.c9 = 457946) AND (column_20.c10 = 457946) AND (column_20.c11 = 457946) AND (column_20.c12 = 457946) AND (column_20.c13 = 457946) AND (column_20.c14 = 457946) AND (column_20.c15 = 457946) AND (column_20.c16 = 457946) AND (column_20.c17 = 457946) AND (column_20.c18 = 457946) AND (column_20.c19 = 457946) AND (column_20.c20 = 457946))
+         Rows Removed by Filter: 333333
+         Buffers: shared hit=5406
+         Worker 0:  actual time=48.620..48.620 rows=0 loops=1
+           Buffers: shared hit=1720
+         Worker 1:  actual time=48.706..48.707 rows=0 loops=1
+           Buffers: shared hit=1734
+ Planning:
+   Buffers: shared hit=68
+ Planning Time: 0.233 ms
+ Execution Time: 55.122 ms
+(18 rows)
+
+Time: 55,792 ms
+CREATE INDEX
+Time: 915,953 ms
+ pg_size_pretty 
+----------------
+ 42 MB
+(1 row)
+
+Time: 0,358 ms
+ pg_size_pretty 
+----------------
+ 30 MB
+(1 row)
+
+Time: 0,248 ms
+DROP INDEX
+Time: 5,227 ms
+DROP TABLE
+Time: 8,477 ms

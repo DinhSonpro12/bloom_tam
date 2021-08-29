@@ -1,0 +1,36 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 161051
+Time: 184,104 ms
+                                                      QUERY PLAN                                                       
+-----------------------------------------------------------------------------------------------------------------------
+ Seq Scan on public.nhieucot_161051  (cost=0.00..3980.47 rows=1 width=12) (actual time=15.297..15.298 rows=0 loops=1)
+   Output: c1, c2, c3
+   Filter: ((nhieucot_161051.c1 = 210308540) AND (nhieucot_161051.c2 = 315462810) AND (nhieucot_161051.c3 = 35051423))
+   Rows Removed by Filter: 161051
+   Buffers: shared hit=871
+ Planning:
+   Buffers: shared hit=30
+ Planning Time: 0.126 ms
+ Execution Time: 15.313 ms
+(9 rows)
+
+Time: 15,728 ms
+CREATE INDEX
+Time: 119,351 ms
+ pg_size_pretty 
+----------------
+ 6968 kB
+(1 row)
+
+Time: 0,339 ms
+ pg_size_pretty 
+----------------
+ 3560 kB
+(1 row)
+
+Time: 0,184 ms
+DROP INDEX
+Time: 1,641 ms
+DROP TABLE
+Time: 2,324 ms

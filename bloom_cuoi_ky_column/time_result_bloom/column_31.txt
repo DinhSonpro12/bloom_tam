@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1000000
+Time: 1278,944 ms (00:01,279)
+CREATE INDEX
+Time: 812,996 ms
+                                                                                                                                                                                                                                                                                                                                                                                                                                                               QUERY PLAN                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..42864.43 rows=1 width=124) (actual time=55.636..58.422 rows=0 loops=1)
+   Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=5406
+   ->  Parallel Seq Scan on public.column_31  (cost=0.00..41864.33 rows=1 width=124) (actual time=53.139..53.140 rows=0 loops=3)
+         Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31
+         Filter: ((column_31.c1 = 457946) AND (column_31.c2 = 457946) AND (column_31.c3 = 457946) AND (column_31.c4 = 457946) AND (column_31.c5 = 457946) AND (column_31.c6 = 457946) AND (column_31.c7 = 457946) AND (column_31.c8 = 457946) AND (column_31.c9 = 457946) AND (column_31.c10 = 457946) AND (column_31.c11 = 457946) AND (column_31.c12 = 457946) AND (column_31.c13 = 457946) AND (column_31.c14 = 457946) AND (column_31.c15 = 457946) AND (column_31.c16 = 457946) AND (column_31.c17 = 457946) AND (column_31.c18 = 457946) AND (column_31.c19 = 457946) AND (column_31.c20 = 457946) AND (column_31.c21 = 457946) AND (column_31.c22 = 457946) AND (column_31.c23 = 457946) AND (column_31.c24 = 457946) AND (column_31.c25 = 457946) AND (column_31.c26 = 457946) AND (column_31.c27 = 457946) AND (column_31.c28 = 457946) AND (column_31.c29 = 457946) AND (column_31.c30 = 457946) AND (column_31.c31 = 457946))
+         Rows Removed by Filter: 333333
+         Buffers: shared hit=5406
+         Worker 0:  actual time=52.092..52.092 rows=0 loops=1
+           Buffers: shared hit=1744
+         Worker 1:  actual time=52.144..52.145 rows=0 loops=1
+           Buffers: shared hit=1733
+ Planning:
+   Buffers: shared hit=194
+ Planning Time: 0.420 ms
+ Execution Time: 58.451 ms
+(18 rows)
+
+Time: 59,286 ms
+ pg_size_pretty 
+----------------
+ 42 MB
+(1 row)
+
+Time: 0,244 ms
+ pg_size_pretty 
+----------------
+ 15 MB
+(1 row)
+
+Time: 0,123 ms
+DROP INDEX
+Time: 6,815 ms
+DROP TABLE
+Time: 11,136 ms

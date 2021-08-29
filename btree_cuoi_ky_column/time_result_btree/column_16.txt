@@ -1,0 +1,45 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 1000000
+Time: 1835,258 ms (00:01,835)
+                                                                                                                                                                                                                                      QUERY PLAN                                                                                                                                                                                                                                      
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..16317.10 rows=1 width=64) (actual time=48.411..51.619 rows=0 loops=1)
+   Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16
+   Workers Planned: 2
+   Workers Launched: 2
+   Buffers: shared hit=5406
+   ->  Parallel Seq Scan on public.column_16  (cost=0.00..15317.00 rows=1 width=64) (actual time=46.079..46.080 rows=0 loops=3)
+         Output: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16
+         Filter: ((column_16.c1 = 457946) AND (column_16.c2 = 457946) AND (column_16.c3 = 457946) AND (column_16.c4 = 457946) AND (column_16.c5 = 457946) AND (column_16.c6 = 457946) AND (column_16.c7 = 457946) AND (column_16.c8 = 457946) AND (column_16.c9 = 457946) AND (column_16.c10 = 457946) AND (column_16.c11 = 457946) AND (column_16.c12 = 457946) AND (column_16.c13 = 457946) AND (column_16.c14 = 457946) AND (column_16.c15 = 457946) AND (column_16.c16 = 457946))
+         Rows Removed by Filter: 333333
+         Buffers: shared hit=5406
+         Worker 0:  actual time=45.029..45.030 rows=0 loops=1
+           Buffers: shared hit=1726
+         Worker 1:  actual time=45.251..45.252 rows=0 loops=1
+           Buffers: shared hit=1739
+ Planning:
+   Buffers: shared hit=60
+ Planning Time: 0.225 ms
+ Execution Time: 51.640 ms
+(18 rows)
+
+Time: 52,302 ms
+CREATE INDEX
+Time: 1281,309 ms (00:01,281)
+ pg_size_pretty 
+----------------
+ 42 MB
+(1 row)
+
+Time: 0,281 ms
+ pg_size_pretty 
+----------------
+ 30 MB
+(1 row)
+
+Time: 0,185 ms
+DROP INDEX
+Time: 5,069 ms
+DROP TABLE
+Time: 8,887 ms

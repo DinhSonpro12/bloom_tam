@@ -1,0 +1,39 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 110000
+Time: 129,276 ms
+CREATE INDEX
+Time: 51,451 ms
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on public.nhieucot_110000  (cost=1968.00..1979.41 rows=1 width=12) (actual time=0.737..0.738 rows=0 loops=1)
+   Output: c1, c2, c3
+   Recheck Cond: ((nhieucot_110000.c1 = 940785242) AND (nhieucot_110000.c3 = 134397891))
+   Filter: (nhieucot_110000.c2 = '2822355726'::bigint)
+   Buffers: shared hit=216
+   ->  Bitmap Index Scan on idx_bloom  (cost=0.00..1968.00 rows=3 width=0) (actual time=0.735..0.735 rows=0 loops=1)
+         Index Cond: ((nhieucot_110000.c1 = 940785242) AND (nhieucot_110000.c3 = 134397891))
+         Buffers: shared hit=216
+ Planning:
+   Buffers: shared hit=55 read=1
+ Planning Time: 0.319 ms
+ Execution Time: 0.766 ms
+(12 rows)
+
+Time: 1,526 ms
+ pg_size_pretty 
+----------------
+ 4760 kB
+(1 row)
+
+Time: 0,249 ms
+ pg_size_pretty 
+----------------
+ 1736 kB
+(1 row)
+
+Time: 0,137 ms
+DROP INDEX
+Time: 1,929 ms
+DROP TABLE
+Time: 2,006 ms

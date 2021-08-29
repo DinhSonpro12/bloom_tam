@@ -1,0 +1,36 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 161051
+Time: 286,294 ms
+CREATE INDEX
+Time: 107,837 ms
+                                                        QUERY PLAN                                                         
+---------------------------------------------------------------------------------------------------------------------------
+ Seq Scan on public.nhieucot_q1_161051  (cost=0.00..2884.14 rows=805 width=12) (actual time=11.193..11.193 rows=0 loops=1)
+   Output: c1, c2, c3
+   Filter: (nhieucot_q1_161051.c1 = 892205732)
+   Rows Removed by Filter: 161051
+   Buffers: shared hit=871
+ Planning:
+   Buffers: shared hit=49
+ Planning Time: 0.158 ms
+ Execution Time: 11.208 ms
+(9 rows)
+
+Time: 11,736 ms
+ pg_size_pretty 
+----------------
+ 6968 kB
+(1 row)
+
+Time: 0,249 ms
+ pg_size_pretty 
+----------------
+ 2536 kB
+(1 row)
+
+Time: 0,126 ms
+DROP INDEX
+Time: 1,784 ms
+DROP TABLE
+Time: 12,054 ms

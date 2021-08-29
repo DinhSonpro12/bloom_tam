@@ -1,0 +1,14 @@
+psql bloom < file_sql_bloom/hash_1.sql > time_result_bloom/hash_1.txt | bash measure_ram.sh 1
+psql bloom < file_sql_bloom/hash_2.sql > time_result_bloom/hash_2.txt | bash measure_ram.sh 2
+psql bloom < file_sql_bloom/hash_3.sql > time_result_bloom/hash_3.txt | bash measure_ram.sh 3
+psql bloom < file_sql_bloom/hash_4.sql > time_result_bloom/hash_4.txt | bash measure_ram.sh 4
+psql bloom < file_sql_bloom/hash_5.sql > time_result_bloom/hash_5.txt | bash measure_ram.sh 5
+psql bloom < file_sql_bloom/hash_6.sql > time_result_bloom/hash_6.txt | bash measure_ram.sh 6
+psql bloom < file_sql_bloom/hash_7.sql > time_result_bloom/hash_7.txt | bash measure_ram.sh 7
+psql bloom < file_sql_bloom/hash_8.sql > time_result_bloom/hash_8.txt | bash measure_ram.sh 8
+psql bloom < file_sql_bloom/hash_9.sql > time_result_bloom/hash_9.txt | bash measure_ram.sh 9
+psql bloom < file_sql_bloom/hash_10.sql > time_result_bloom/hash_10.txt | bash measure_ram.sh 10
+psql bloom < file_sql_bloom/hash_11.sql > time_result_bloom/hash_11.txt | bash measure_ram.sh 11
+psql bloom < file_sql_bloom/hash_12.sql > time_result_bloom/hash_12.txt | bash measure_ram.sh 12
+psql bloom < file_sql_bloom/hash_13.sql > time_result_bloom/hash_13.txt | bash measure_ram.sh 13
+psql bloom < file_sql_bloom/hash_14.sql > time_result_bloom/hash_14.txt | bash measure_ram.sh 14

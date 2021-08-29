@@ -1,0 +1,36 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 133100
+Time: 143,617 ms
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Seq Scan on public.nhieucot_133100  (cost=0.00..3290.40 rows=1 width=12) (actual time=12.686..12.687 rows=0 loops=1)
+   Output: c1, c2, c3
+   Filter: ((nhieucot_133100.c1 = 1807246452) AND (nhieucot_133100.c2 = '2710869678'::bigint) AND (nhieucot_133100.c3 = 301207742))
+   Rows Removed by Filter: 133100
+   Buffers: shared hit=720
+ Planning:
+   Buffers: shared hit=34 read=1
+ Planning Time: 0.144 ms
+ Execution Time: 12.701 ms
+(9 rows)
+
+Time: 13,255 ms
+CREATE INDEX
+Time: 98,621 ms
+ pg_size_pretty 
+----------------
+ 5760 kB
+(1 row)
+
+Time: 0,332 ms
+ pg_size_pretty 
+----------------
+ 2944 kB
+(1 row)
+
+Time: 0,156 ms
+DROP INDEX
+Time: 1,555 ms
+DROP TABLE
+Time: 2,225 ms

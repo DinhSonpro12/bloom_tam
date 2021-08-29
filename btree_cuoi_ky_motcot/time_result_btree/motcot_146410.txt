@@ -1,0 +1,36 @@
+CREATE TABLE
+Timing is on.
+INSERT 0 146410
+Time: 149,292 ms
+                                                     QUERY PLAN                                                      
+---------------------------------------------------------------------------------------------------------------------
+ Seq Scan on public.motcot_146410  (cost=0.00..2713.50 rows=826 width=4) (actual time=13.301..13.302 rows=0 loops=1)
+   Output: c1
+   Filter: (motcot_146410.c1 = 431216993)
+   Rows Removed by Filter: 146410
+   Buffers: shared hit=648
+ Planning:
+   Buffers: shared hit=26
+ Planning Time: 0.124 ms
+ Execution Time: 13.316 ms
+(9 rows)
+
+Time: 13,791 ms
+CREATE INDEX
+Time: 108,784 ms
+ pg_size_pretty 
+----------------
+ 5184 kB
+(1 row)
+
+Time: 0,271 ms
+ pg_size_pretty 
+----------------
+ 3240 kB
+(1 row)
+
+Time: 0,178 ms
+DROP INDEX
+Time: 1,601 ms
+DROP TABLE
+Time: 2,000 ms
